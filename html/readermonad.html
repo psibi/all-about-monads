@@ -103,7 +103,7 @@ class MonadReader e m | m -> e where
     ask   :: m e
     local :: (e -> e) -> m a -> m a 
  
-instance MonadReader (Reader e) where 
+instance MonadReader e (Reader e) where 
     ask       = Reader id 
     local f c = Reader $ \e -> runReader c (f e) 
  
